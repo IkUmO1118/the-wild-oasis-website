@@ -1,9 +1,11 @@
 import CabinCard from '@/app/_components/CabinCard';
 import CabinList from '@/app/_components/CabinList';
 import { Suspense } from 'react';
-import Spinner from '../_components/Spinner';
+import Spinner from '@/app/_components/Spinner';
+import Filter from '@/app/_components/Filter';
 
 // seconds
+// searchParamsを用いたことで、dynamic renderingが行われる。以下のコードは意味をなさなくなった
 export const revalidate = 3600;
 
 export const metadata = {
@@ -27,7 +29,11 @@ export default function Page({ searchParams }) {
         Welcome to paradise.
       </p>
 
-      <Suspense fallback={<Spinner />}>
+      <div className='flex justify-end mb-8'>
+        <Filter />
+      </div>
+
+      <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
       </Suspense>
     </div>
