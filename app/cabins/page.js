@@ -3,6 +3,7 @@ import CabinList from '@/app/_components/CabinList';
 import { Suspense } from 'react';
 import Spinner from '@/app/_components/Spinner';
 import Filter from '@/app/_components/Filter';
+import ReservationReminder from '../_components/ReservationReminder';
 
 // seconds
 // searchParamsを用いたことで、dynamic renderingが行われる。以下のコードは意味をなさなくなった
@@ -35,6 +36,7 @@ export default function Page({ searchParams }) {
 
       <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
+        <ReservationReminder />
       </Suspense>
     </div>
   );
